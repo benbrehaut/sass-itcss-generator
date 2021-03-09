@@ -1,0 +1,29 @@
+{
+  "name": "sass-itcss-generator",
+  "version": "0.0.0",
+  "description": "Tool to generate Sass files following ITCSS principles and BEM",
+  "main": "./src/index.js",
+  "engines": {
+    "node": ">=14.0.0"
+  },
+  "bin": {
+    "sass-itcss-generator": "./src/index.js"
+  },
+  "scripts": {
+    "preinstall": "node bin/check-node-version.js",
+    "prestart": "node bin/check-node-version.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/benbrehaut/sass-templater.git"
+  },
+  "author": "Ben Brehaut",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/benbrehaut/sass-templater/issues"
+  },
+  "homepage": "https://github.com/benbrehaut/sass-templater#readme",
+  "devDependencies": {
+    "yargs": "latest"
+  }
+}
