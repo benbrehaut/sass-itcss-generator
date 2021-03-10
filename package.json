@@ -15,14 +15,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/benbrehaut/sass-templater.git"
+    "url": "git+https://github.com/benbrehaut/sass-itcss-generator.git"
   },
   "author": "Ben Brehaut",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/benbrehaut/sass-templater/issues"
+    "url": "https://github.com/benbrehaut/sass-itcss-generator/issues"
   },
-  "homepage": "https://github.com/benbrehaut/sass-templater#readme",
+  "homepage": "https://github.com/benbrehaut/sass-itcss-generator#readme",
   "devDependencies": {
     "yargs": "latest"
   }
