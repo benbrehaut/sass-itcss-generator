@@ -1,11 +1,12 @@
 #! /usr/bin/env node
 'use strict';
 
-const fs = require('fs');
-const path = require('path');
-const args = require('yargs').argv;
-const name = args._[0].toString();
-const CONSTANTS = require('./constants');
+import { existsSync, mkdir, mkdirSync, writeFile, copyFile } from 'fs';
+import yargs from 'yargs';
+import { hideBin } from 'yargs/helpers';
+import { FOLDERS } from './constants.js';
+const argv = yargs(hideBin(process.argv)).argv;
+const name = argv._[0].toString();
 
 // if name parameter is not passed, throw error.
 if (!name) {
@@ -20,11 +21,11 @@ console.log(`✅ Completed`);
 
 /**
  * Initialise the function
- * @param {string} folderName - the folder name to output to, comes from cli
+ * @param {string} folderName - The folder name to output to, comes from cli
  */
 function init(folderName) {
     // If folder already exists, throw error.
-    if (fs.existsSync(folderName)) {
+    if (existsSync(folderName)) {
         throw new Error('❌ Directory already exists.');
     }
 
@@ -36,7 +37,7 @@ function init(folderName) {
     console.log(`🔨 Creating sub folders`);
 
     // Create all of the sub folders from constants
-    CONSTANTS.FOLDERS.forEach(folder => {
+    FOLDERS.forEach(folder => {
         createFolder(folderName, folder);
     });
 
@@ -49,7 +50,7 @@ function init(folderName) {
  * @param {String} rootFolder - The name of the root folder
  */
 function createRootFolder(rootFolder) {
-    fs.mkdir(rootFolder, { recursive: true }, (errorHandler));
+    mkdir(rootFolder, { recursive: true }, (errorHandler));
 }
 
 /**
@@ -58,8 +59,8 @@ function createRootFolder(rootFolder) {
  * @param {String} folder - The name of the folder
  */
 function createFolder(rootFolder, folder) {
-    fs.mkdirSync(`${rootFolder}/${folder}`);
-    fs.writeFile(`${rootFolder}/${folder}/_index.scss`, '', errorHandler);  
+    mkdirSync(`${rootFolder}/${folder}`);
+    writeFile(`${rootFolder}/${folder}/_index.scss`, '', errorHandler);  
 }
 
 /**
@@ -67,7 +68,7 @@ function createFolder(rootFolder, folder) {
  * @param {String} rootFolder - The folder where the file should be created in
  */
 function createIndexFile(rootFolder) {
-    fs.copyFile(path.resolve(__dirname, './templates/_index.scss'), `./${rootFolder}/_index.scss`, errorHandler);
+    copyFile(new URL('./templates/_index.scss', import.meta.url), `./${rootFolder}/_index.scss`, errorHandler);
 }
 
 /**
