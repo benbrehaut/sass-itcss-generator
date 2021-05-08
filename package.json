@@ -17,6 +17,7 @@
     "type": "git",
     "url": "git+https://github.com/benbrehaut/sass-itcss-generator.git"
   },
+  "type": "module",
   "author": "Ben Brehaut",
   "license": "MIT",
   "bugs": {
