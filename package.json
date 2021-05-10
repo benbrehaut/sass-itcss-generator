@@ -11,7 +11,8 @@
   },
   "scripts": {
     "preinstall": "node bin/check-node-version.js",
-    "prestart": "node bin/check-node-version.js"
+    "test": "jest --config ./jest.config.json",
+    "test:watch": "npm run test -- --watch"
   },
   "repository": {
     "type": "git",
