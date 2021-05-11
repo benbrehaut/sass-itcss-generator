@@ -1,6 +1,6 @@
 {
   "name": "sass-itcss-generator",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Tool to generate Sass files following ITCSS principles and BEM",
   "main": "./src/index.js",
   "engines": {
