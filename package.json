@@ -6,12 +6,8 @@
   "engines": {
     "node": ">=14.0.0"
   },
-  "bin": {
-    "sass-itcss-generator": "./src/index.js"
-  },
+  "bin": "./bin/sass-itcss-generator.js",
   "scripts": {
-    "preinstall": "node bin/check-node-version.js",
-    "prestart": "node bin/check-node-version.js",
     "test": "jest --config ./jest.config.json",
     "test:watch": "npm run test -- --watch"
   },
@@ -28,7 +24,6 @@
     "type": "git",
     "url": "git+https://github.com/benbrehaut/sass-itcss-generator.git"
   },
-  "type": "module",
   "author": "Ben Brehaut",
   "license": "MIT",
   "bugs": {
@@ -44,7 +39,10 @@
     "@semantic-release/release-notes-generator": "^9.0.2",
     "@types/jest": "^26.0.23",
     "jest": "^26.6.3",
-    "semantic-release": "^17.4.1",
-    "yargs": "latest"
+    "semantic-release": "^17.4.1"
+  },
+  "dependencies": {
+    "esm": "^3.2.25",
+    "yargs": "^17.0.1"
   }
 }

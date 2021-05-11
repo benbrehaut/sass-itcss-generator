@@ -1,35 +1,19 @@
-#! /usr/bin/env node
 'use strict';
 
 import { existsSync, mkdir, mkdirSync, writeFile, copyFile } from 'fs';
-import yargs from 'yargs';
-import { hideBin } from 'yargs/helpers';
 import { FOLDERS } from './constants.js';
-const argv = yargs(hideBin(process.argv)).argv;
-const name = argv._[0].toString();
-
-// if name parameter is not passed, throw error.
-if (!name) {
-    throw new Error('❌ Please include the directory name');
-}
-
-// Create the folders and files
-init(name);
-
-// Console out completion
-console.log(`✅ Completed`);
 
 /**
- * Initialise the function
+ * Create the folders and files
  * @param {string} folderName - The folder name to output to, comes from cli
  */
-function init(folderName) {
+export function sassItcssGenerator(folderName) {
     // If folder already exists, throw error.
     if (existsSync(folderName)) {
         throw new Error('❌ Directory already exists.');
     }
 
-    console.log(`🔨 Creating ${name} folder`);
+    console.log(`🔨 Creating ${folderName} folder`);
 
     // Create directory passed by user
     createRootFolder(folderName);
@@ -43,6 +27,9 @@ function init(folderName) {
 
     // Copy the template file to the user defined folder
     createIndexFile(folderName);
+
+    // Console out completion
+    console.log(`✅ Completed`);
 }
 
 /**
