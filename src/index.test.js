@@ -19,13 +19,13 @@ describe('Running the command', () => {
 });
 
 /**
- * Run sass-itcss-generator through node
+ * Run sass-itcss-generator through node and esm package
  * @param {String} folderName - Arguments from the cli
  * @param {*} cwd - Any options to pass to the exec command 
  */
 function runModule(folderName, cwd) {
     return new Promise((resolve) => {
-        exec(`node ./src/index.js ${folderName}`, { cwd }, (error, stdout, stderr) => {
+        exec(`node -r esm ./src/cli.js ${folderName}`, { cwd }, (error, stdout, stderr) => {
             resolve({
                 code: error && error.code ? error.code : 0,
                 error,
